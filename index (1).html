@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Календарь дедлайнов</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <button id="themeToggle" class="theme-toggle" title="Сменить тему">🌙</button>
+    <h1>📅 Календарь дедлайнов</h1>
+    <p class="subtitle">Контрольные, срезы и проекты — не пропусти ни один</p>
+    <p id="nextUp" class="next-up"></p>
+  </header>
+
+  <main>
+    <section class="add-form">
+      <h2>Добавить дедлайн</h2>
+      <form id="deadlineForm">
+        <input type="text" id="title" placeholder="Что нужно сдать?" required>
+        <div class="form-row">
+          <select id="type" required>
+            <option value="exam">Экзамен</option>
+            <option value="project">Проект</option>
+            <option value="olympiad">Олимпиада</option>
+            <option value="consult">Консультация</option>
+          </select>
+          <input type="date" id="date" required>
+        </div>
+        <button type="submit" class="primary">Добавить</button>
+      </form>
+    </section>
+
+    <div id="filters" class="filters">
+      <button class="active" data-filter="all">Все</button>
+      <button data-filter="exam">Экзамены</button>
+      <button data-filter="project">Проекты</button>
+      <button data-filter="olympiad">Олимпиады</button>
+      <button data-filter="consult">Консультации</button>
+    </div>
+
+    <div class="legend">
+      <span><i class="dot dot-today"></i> сегодня</span>
+      <span><i class="dot dot-soon"></i> до 3 дней</span>
+      <span><i class="dot dot-far"></i> есть время</span>
+      <span><i class="dot dot-overdue"></i> просрочено</span>
+    </div>
+
+    <div id="todayBanner" class="banner hidden"></div>
+
+    <section>
+      <h2>Ближайшие дедлайны</h2>
+      <div id="stats" class="stats"></div>
+      <div id="progressWrap" class="progress-wrap hidden">
+        <div class="progress-bar"><div id="progressFill"></div></div>
+        <span id="progressText" class="progress-text"></span>
+      </div>
+      <ul id="deadlineList"></ul>
+      <p id="emptyMsg" class="empty hidden">В этой категории всё чисто 🙂</p>
+      <button id="clearAll" class="ghost">Очистить всё</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Учебный проект, 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
